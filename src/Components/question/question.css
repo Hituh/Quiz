@@ -1,0 +1,11 @@
+.example-container1 {
+    margin-left: 25%;
+    margin-bottom: 3vh;
+    height: fit-content;
+    width: 50%;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #f08, #3b43de);
+  }
+  .row1{
+    display:flex;
+  }
