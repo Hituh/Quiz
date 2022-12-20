@@ -1,79 +1,39 @@
-import React, {Component} from 'react'
-import './question.css'
-class Question extends Component{
-    constructor(props){
-		super(props);
-		this.state = {
-			answer: ""
-		};
-	} 
-    handleA = () => {
-        if(this.props.data.Answer === 1){
+import React, { Component } from 'react'
+import styles from './question.module.css'
+class Question extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        };
+    }
+    handleAnswer = (userAnswer) => {
+        if (userAnswer === this.props.CorrectAnswer) {
             this.setState(() => {
-                return {answer: "Prawda"};
-           })
+                return { answer: "Poprawna odpowiedź!" };
+            })
         }
-       else{
-        this.setState(() => {
-            return {answer: "Fałsz"};
-       })
-       }
-      }
-      handleB = () => {
-        if(this.props.data.Answer === 2){
+        else {
             this.setState(() => {
-                return {answer: "Prawda"};
-           })
+                return { answer: "Niestety źle" };
+            })
         }
-        else{
-            this.setState(() => {
-                return {answer: "Fałsz"};
-           })
-           }
-      }
-      handleC = () => {
-        if(this.props.data.Answer === 3)
-        this.setState(() => {
-            return {answer: "Prawda"};
-       })
-       else{
-        this.setState(() => {
-            return {answer: "Fałsz"};
-       })
-       }
-      }
-      handleD = () => {
-        if(this.props.data.Answer === 4)
-        this.setState(() => {
-            return {answer: "Prawda"};
-       })
-       else{
-        this.setState(() => {
-            return {answer: "Fałsz"};
-       })
-       }
-      }
-      render(){
-    return (
-        <div className="example-container1">
-            <h2 style={{marginLeft:"10%"}}>{this.props.data.Question}</h2>
-            <div className="row1">
-            <div style={{marginLeft:"10%"}}>
-            <p>{this.props.data.Options[0]}</p>
-            <p>{this.props.data.Options[1]}</p>
-            <p>{this.props.data.Options[2]}</p>
-            <p>{this.props.data.Options[3]}</p>
+    }
+    render() {
+        return (
+            <div className = {styles.card}>
+                <h2 style={{ marginLeft: "10%" }}>{this.props.Question}</h2>
+                <div className="row1">
+                    <div style={{ marginLeft: "10%" }}>
+                        <p>{this.props.Answers[0]} <button className={styles.Button2} onClick={() => this.handleAnswer(1)}>Zaznacz odpowiedź</button></p>
+                        <p>{this.props.Answers[1]} <button className={styles.Button2} onClick={() => this.handleAnswer(2)}>Zaznacz odpowiedź</button></p>
+                        <p>{this.props.Answers[2]} <button className={styles.Button2} onClick={() => this.handleAnswer(3)}>Zaznacz odpowiedź</button></p>
+                        <p>{this.props.Answers[3]} <button className={styles.Button2} onClick={() => this.handleAnswer(4)}>Zaznacz odpowiedź</button></p>
+                    </div>
+                </div>
+                <p style={{ marginLeft: "70%", fontSize:"10px"}}>Id pytania: {this.props.Id}</p>
+                <p style={{ marginLeft: "10%" }}> {this.state.answer}</p>
             </div>
-            
-            <div style={{marginLeft:"10%"}}>
-                <p><input type="button" value="Odp A" onClick={() => this.handleA()}/></p>
-                <p><input type="button" value="Odp B" onClick={() => this.handleB()}/></p>
-                <p><input type="button" value="Odp C" onClick={() => this.handleC()}/></p>
-                <p><input type="button" value="Odp D" onClick={() => this.handleD()}/></p>                                                                                          
-            </div>
-            </div>
-            <p style={{marginLeft:"10vh"}}>ODPOWIEDŹ: {this.state.answer}</p> 
-        </div>
-    )}
+        )
+    }
 }
 export default Question

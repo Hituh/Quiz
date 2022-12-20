@@ -7,7 +7,7 @@ const Header = () => {
         <div>
                 <div className="header">
                     <Link className="link" to="/" style={{ textDecoration: "none", marginLeft: "1rem" }}>QuizDB</Link>
-                    <Link className="link" to="quizList" style={{ textDecoration: "none", marginLeft: "1rem" }}>Lista quizów</Link>
+                    <Link className="link" to="QuizPage" style={{ textDecoration: "none", marginLeft: "1rem" }}>Lista quizów</Link>
                     <Link className="link" to="/" style={{ textDecoration: "none" }}>Contact</Link>
                 </div>
         </div>
