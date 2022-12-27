@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./addQuestion.module.css";
 import { useNavigate } from "react-router-dom";
-
+import {addQuestion} from '../api/QuizApi.js'
 class AddQuestion extends React.Component {
     constructor(props) {
         super(props);
@@ -99,6 +99,7 @@ class AddQuestion extends React.Component {
         };
     
             this.props.updateQuestions(newQuestion)
+            addQuestion(newQuestion);
         
         // this.props.updateQuestions(newQuestion)
         // this.quizInfo.push(newQuestion);

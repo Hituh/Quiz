@@ -18,6 +18,7 @@ class Question extends Component {
             })
         }
     }
+    
     render() {
         return (
             <div className = {styles.card}>

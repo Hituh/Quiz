@@ -1,23 +1,36 @@
 import React, { useState, Component} from "react";
-import { useLocation } from "react-router-dom";
 import Question from "../question/question";
 import AddQuestion from "../addQuestion/addQuestion";
 import styles from "../quizPage/quizPage.module.css";
+import {getQuiz} from '../api/QuizApi.js'
 
 class QuizPage extends Component {
     //const quizInfo = useLocation();
     constructor (props) {
         super(props)
         this.state = {
-            props: [...this.props.props]
+            //props: [...this.props.props]
+            props:[],
         }
     }
 
+    componentDidMount(){
+        const {props} = this.state;
+        if(props.length === 0){
+            getQuiz()
+            .then(props1 =>{
+                this.setState({
+                    props: props1,
+                })
+            })
+        } 
+    }
     handleAdd = () => {
         this.setState({ isShown: !this.state.isShown });
       };
 
     updateQuestions = (question) => {
+        // this.updateQuiz("PUSH", question);
         var done = false;
         if(!done)
         this.setState((prevState) => {
@@ -28,6 +41,22 @@ class QuizPage extends Component {
         return {props: students};
           });
     }
+
+    // updateQuiz =(action, body) =>{
+    //     switch(action){
+    //         case "PUSH":
+    //             this.setState(state => {
+    //                 var list = state.props;
+    //                 list.push(body);
+    //                 return {props:list};
+    //             });
+    //             break;
+    //             default:
+    //                 break;
+
+    //     }
+        
+    // }
     render (){
         console.log(this.state)
         return (

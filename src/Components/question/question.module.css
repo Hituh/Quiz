@@ -15,8 +15,8 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     color:#BDBDBD;
-    min-width: 40vh;
-    max-width: 40vh;
+    min-width: 90vh;
+    max-width: 90vh;
 }
 
 .card:hover {
