@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./editQuestion.module.css";
 import {editQuestion} from '../api/QuizApi.js'
-import PropTypes from 'prop-types';
 class EditQuestion extends React.Component {
     constructor(props) {
         super(props);
@@ -100,12 +99,4 @@ class EditQuestion extends React.Component {
     }
 }
 export default EditQuestion;
-EditQuestion.propTypes = {
-    contactList: PropTypes.shape({
-        Id:PropTypes.number.isRequired,
-        Question: PropTypes.string.isRequired,
-        Answer: PropTypes.array,
-        CorrectAnswer: PropTypes.string.isRequired,
-      }),
-  };
 
