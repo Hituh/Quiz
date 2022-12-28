@@ -5,11 +5,9 @@ import styles from "../quizPage/quizPage.module.css";
 import {getQuiz} from '../api/QuizApi.js'
 
 class QuizPage extends Component {
-    //const quizInfo = useLocation();
     constructor (props) {
         super(props)
         this.state = {
-            //props: [...this.props.props]
             props:[],
         }
     }
@@ -29,6 +27,7 @@ class QuizPage extends Component {
         this.setState({ isShown: !this.state.isShown });
       };
 
+
     updateQuestions = (question) => {
         // this.updateQuiz("PUSH", question);
         var done = false;
@@ -42,21 +41,41 @@ class QuizPage extends Component {
           });
     }
 
-    // updateQuiz =(action, body) =>{
-    //     switch(action){
-    //         case "PUSH":
-    //             this.setState(state => {
-    //                 var list = state.props;
-    //                 list.push(body);
-    //                 return {props:list};
-    //             });
-    //             break;
-    //             default:
-    //                 break;
+    updateQuiz =(action, body) =>{
+        switch(action){
+            case "PUSH":
+                this.setState(state => {
+                    var list = state.props;
+                    list.push(body);
+                    return {props:list};
+                });
+                break;
+                default:
+                    break;
+            case "PUT":
+                this.setState(state =>{
+                    var list =state.props;
+                    var qId = list.findIndex(q => q.Id === body.Id);
+                    list[qId].Question = body.Question;
+                    list[qId].Answers[0] = body.Answers[0];
+                    list[qId].Answers[1] = body.Answers[1];
+                    list[qId].Answers[2] = body.Answers[2];
+                    list[qId].Answers[3] = body.Answers[3];
 
-    //     }
+                    return {props: list}
+                })
+                break;
+                case "DELETE":
+                this.setState(state =>{
+                    var list =state.props;
+                    var qId = list.findIndex(q => q.Id === body.Id);
+                    list.splice(qId);
+                    return {props: list}
+                })
+                break;
+        }
         
-    // }
+    }
     render (){
         console.log(this.state)
         return (
@@ -71,6 +90,7 @@ class QuizPage extends Component {
                                 CorrectAnswer={
                                     data.CorrectAnswer
                                 }
+                                data={this.updateQuiz}
                             />
                         </div>
                     ))}

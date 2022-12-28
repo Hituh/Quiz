@@ -22,8 +22,9 @@ function addQuestion(body){
     })
 }
 
-function editQuestion(id,body){
-    return axios.put("/meals/" +id,body)
+function editQuestion(Id,body){
+    console.log("W Api jest id: "+Id)
+    return axios.put("/meals/"+Id, body)
     .then((response) => {
         return response;
     })
