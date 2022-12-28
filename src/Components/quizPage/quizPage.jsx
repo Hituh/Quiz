@@ -1,4 +1,4 @@
-import React, { useState, Component} from "react";
+import React, {Component} from "react";
 import Question from "../question/question";
 import AddQuestion from "../addQuestion/addQuestion";
 import styles from "../quizPage/quizPage.module.css";
@@ -9,6 +9,8 @@ class QuizPage extends Component {
         super(props)
         this.state = {
             props:[],
+            isShown: false,
+            myScore: 0
         }
     }
 
@@ -27,9 +29,15 @@ class QuizPage extends Component {
         this.setState({ isShown: !this.state.isShown });
       };
 
+      handleScore = (points) => {
+        var prevScore = this.state.myScore;
+        var actualScore = prevScore + points;
+        this.setState({myScore: actualScore  });
+        console.log(actualScore)
+      };
+
 
     updateQuestions = (question) => {
-        // this.updateQuiz("PUSH", question);
         var done = false;
         if(!done)
         this.setState((prevState) => {
@@ -77,9 +85,11 @@ class QuizPage extends Component {
         
     }
     render (){
-        console.log(this.state)
         return (
             <div className="main1">
+                <div>
+                    <h1>Aktualny wynik: {this.state.myScore}</h1>
+                </div>
                 <div className={styles.card_list}>
                     {this.state.props.map((data) => (
                         <div key={data.Id}>
@@ -91,6 +101,7 @@ class QuizPage extends Component {
                                     data.CorrectAnswer
                                 }
                                 data={this.updateQuiz}
+                                score={this.handleScore}
                             />
                         </div>
                     ))}
@@ -103,15 +114,16 @@ class QuizPage extends Component {
                                 onClick={this.handleAdd}>
                                 Dodaj Pytanie
                             </button>
-                            
+                            {this.state.isShown ? (
                                 <div>
                                     <AddQuestion data={this.props} updateQuestions={this.updateQuestions}/>
                                 </div>
-                            
-                        </div>
                     
-                    {/* <AddQuizButton /> */}
-                    {/* <AddQuizButton data={quizInfo.state.myProps.data}/> */}
+                            ) : (
+                                <></>
+                                )}
+                        </div>
+                
                 </div>
             </div>
         );

@@ -46,7 +46,7 @@ class AddQuestion extends React.Component {
             case 'Id':
                 if(value != null)
                 for(var i = 0; i <this.props.data.props.length; i++){
-                    idValid = (value == this.props.data.props[i].Id)
+                    idValid = (value === this.props.data.props[i].Id)
                     if(idValid) break;
                 }                
                 break;
@@ -99,11 +99,6 @@ class AddQuestion extends React.Component {
     
             this.props.updateQuestions(newQuestion)
             addQuestion(newQuestion);
-        
-        // this.props.updateQuestions(newQuestion)
-        // this.quizInfo.push(newQuestion);
-        // window.localStorage.removeItem("quizData");
-        // localStorage.setItem("quizData", JSON.stringify(this.quizInfo));
     };
     render() {
         return (

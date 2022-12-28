@@ -6,7 +6,10 @@ import {deleteQuestion} from '../api/QuizApi.js'
 class Question extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props)
         this.state = {
+            isShown: false,
+            points: 0
         };
     }
     handleAnswer = (userAnswer) => {
@@ -14,18 +17,26 @@ class Question extends Component {
             this.setState(() => {
                 return { answer: "Poprawna odpowiedź!" };
             })
+            this.setState({ points: 1 });
+            this.props.score(1)
         }
         else {
             this.setState(() => {
-                return { answer: "Niestety źle" };
+                return { answer: "Niestety źle :(" };
             })
+            this.setState({ points: 0 });
+            this.props.score(0)
         }
     }
     handleDelete = () =>{
         this.props.data("DELETE", this.props.Id);
         deleteQuestion(this.props.Id)
     }
-    
+
+    handleEdit = () => {
+        this.setState({ isShown: !this.state.isShown });
+      };
+
     render() {
         return (
             <>
@@ -39,12 +50,16 @@ class Question extends Component {
                         <p>{this.props.Answers[3]} <button className={styles.Button2} onClick={() => this.handleAnswer(4)}>Zaznacz odpowiedź</button></p>
                     </div>
                 </div>
-                <p style={{ marginLeft: "70%", fontSize:"10px"}}>Id pytania: {this.props.Id}  <button className={styles.editButtons} style={{marginLeft:"40%"}}>Edytuj</button><button className={styles.editButtons} onClick={this.handleDelete}>X</button></p>
+                <p style={{ marginLeft: "70%", fontSize:"10px"}}>Id pytania: {this.props.Id}  <button className={styles.editButtons} style={{marginLeft:"40%"}} onClick={this.handleEdit}>Edytuj</button><button className={styles.editButtons} onClick={this.handleDelete}>X</button></p>
                 <p style={{ marginLeft: "40%", color:"#3b43de", fontSize:"2.5vh", fontWeight:"700"}}> {this.state.answer} </p>
             </div>
-            <div>
-                <EditQuestion data={this.props} update={this.props.data}/>
-            </div>
+            {this.state.isShown ? (
+                                <div>
+                                    <EditQuestion data={this.props} update={this.props.data}/>
+                                </div>
+                            ) : (
+                                <></>
+                                )}
         </>
         )
     }
