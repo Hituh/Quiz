@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styles from './question.module.css'
 import EditQuestion from "../editQuestion/editQuestion";
 import {deleteQuestion} from '../api/QuizApi.js'
+import PropTypes from "prop-types";
 
 class Question extends Component {
     constructor(props) {
@@ -65,3 +66,28 @@ class Question extends Component {
     }
 }
 export default Question
+
+Question.propTypes = { 
+    Answers: function(props, Answers, Question){
+        if(props[Answers].length !== 4){
+            return new Error(Answers+" passed to "+Question+" -> not enough answers")
+        }
+    },
+    Id: function(props, Id, Question){
+        if(props.Id<0){
+            return new Error(Id+" passed to "+Question+ " was not postive number.")
+        }
+    },
+    CorrectAnswer: function(props,CorrectAnswer,Question){
+        if(props.Id<0 || props.Id>4){
+            return new Error(CorrectAnswer+" passed to "+Question+ " was not a number from <1,4>")
+        }
+    },
+    Question: function(props,Question,component){
+        if(props.Question.length<3){
+            return new Error(Question+ " was too short")
+        }
+    },
+    data: PropTypes.func.isRequired,
+    score: PropTypes.func.isRequired
+} 

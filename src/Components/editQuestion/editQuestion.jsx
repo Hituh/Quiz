@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./editQuestion.module.css";
 import {editQuestion} from '../api/QuizApi.js'
+import PropTypes from "prop-types";
 class EditQuestion extends React.Component {
     constructor(props) {
         super(props);
-        
         this.state = {
             Id: this.props.data.Id,
             Question: this.props.data.Question,
@@ -100,3 +100,7 @@ class EditQuestion extends React.Component {
 }
 export default EditQuestion;
 
+EditQuestion.propTypes = { 
+    data: PropTypes.object.isRequired,
+    update: PropTypes.func.isRequired
+} 

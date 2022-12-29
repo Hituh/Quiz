@@ -3,6 +3,7 @@ import Question from "../question/question";
 import AddQuestion from "../addQuestion/addQuestion";
 import styles from "../quizPage/quizPage.module.css";
 import {getQuiz} from '../api/QuizApi.js'
+import { Link } from "react-router-dom"
 
 class QuizPage extends Component {
     constructor (props) {
@@ -106,6 +107,7 @@ class QuizPage extends Component {
                         </div>
                     ))}
                 </div>
+                <Link to={`/score/${this.state.myScore}`}style={{ textDecoration: "none" }}>Zakończ Quiz</Link>
                 <div className="row">
                 
                         <div>
