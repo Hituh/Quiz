@@ -4,7 +4,7 @@ import {addQuestion} from '../api/QuizApi.js'
 class AddQuestion extends React.Component {
     constructor(props) {
         super(props);
-        
+        console.log(this.props)
         this.state = {
             Id: "",
             Question: "",
@@ -22,6 +22,7 @@ class AddQuestion extends React.Component {
             answer4Valid: false,
             correctAnswerValid: false,
             formValid: false,
+            which: props.which
         };
         this.quizInfo = JSON.parse(localStorage.getItem("quizData"));
     }
@@ -45,8 +46,8 @@ class AddQuestion extends React.Component {
         switch (fieldName) {
             case 'Id':
                 if(value != null)
-                for(var i = 0; i <this.props.data.props.length; i++){
-                    idValid = (value === this.props.data.props[i].Id)
+                for(var i = 0; i <this.props.data.length; i++){
+                    idValid = (value == this.props.data[i].Id) // tu musi byc tylko == bo === nie dziala
                     if(idValid) break;
                 }                
                 break;
@@ -98,7 +99,8 @@ class AddQuestion extends React.Component {
         };
     
             this.props.updateQuestions(newQuestion)
-            addQuestion(newQuestion);
+            if(this.state.which === "React"){addQuestion(newQuestion);}
+            else if(this.state.which === "Angular"){addQuestion(newQuestion);}
     };
     render() {
         return (

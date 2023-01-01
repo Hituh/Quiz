@@ -7,7 +7,8 @@ const Header = () => {
         <div>
                 <div className="header">
                     <Link className="link" to="/" style={{ textDecoration: "none", marginLeft: "1rem" }}>QuizDB</Link>
-                    <Link className="link" to="QuizPage" style={{ textDecoration: "none", marginLeft: "1rem" }}>Lista quizów</Link>
+                    <Link className="link" to="/quizPage" style={{ textDecoration: "none", marginLeft: "1rem" }}>Quiz React</Link>
+                    <Link className="link" to="/quizPageA" style={{ textDecoration: "none", marginLeft: "1rem" }}>Quiz Angular</Link>
                     <Link className="link" to="/" style={{ textDecoration: "none" }}>Contact</Link>
                 </div>
         </div>

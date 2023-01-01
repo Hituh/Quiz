@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styles from './question.module.css'
 import EditQuestion from "../editQuestion/editQuestion";
 import {deleteQuestion} from '../api/QuizApi.js'
+import {deleteQuestionA} from '../api/QuizApi.js'
 import PropTypes from "prop-types";
 
 class Question extends Component {
@@ -10,7 +11,8 @@ class Question extends Component {
         console.log(this.props)
         this.state = {
             isShown: false,
-            points: 0
+            points: 0,
+            which:props.which
         };
     }
     handleAnswer = (userAnswer) => {
@@ -31,7 +33,8 @@ class Question extends Component {
     }
     handleDelete = () =>{
         this.props.data("DELETE", this.props.Id);
-        deleteQuestion(this.props.Id)
+        if(this.state.which === "React"){deleteQuestion(this.props.Id)}
+        else if(this.state.which === "Angular"){deleteQuestionA(this.props.Id)}
     }
 
     handleEdit = () => {
@@ -56,7 +59,7 @@ class Question extends Component {
             </div>
             {this.state.isShown ? (
                                 <div>
-                                    <EditQuestion data={this.props} update={this.props.data}/>
+                                    <EditQuestion data={this.props} update={this.props.data} which={this.state.which}/>
                                 </div>
                             ) : (
                                 <></>
@@ -79,8 +82,8 @@ Question.propTypes = {
         }
     },
     CorrectAnswer: function(props,CorrectAnswer,Question){
-        if(props.Id<0 || props.Id>4){
-            return new Error(CorrectAnswer+" passed to "+Question+ " was not a number from <1,4>")
+        if(props.CorrectAnswer<0 || props.CorrectAnswer>4){
+            return new Error(CorrectAnswer+" passed to "+Question+ " was not a number from <1,4>. It is actually:"+props.CorrectAnswer)
         }
     },
     Question: function(props,Question,component){

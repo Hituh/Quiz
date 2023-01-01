@@ -3,6 +3,7 @@ import Question from "../question/question";
 import AddQuestion from "../addQuestion/addQuestion";
 import styles from "../quizPage/quizPage.module.css";
 import {getQuiz} from '../api/QuizApi.js'
+import {getQuizA} from '../api/QuizApi.js'
 import { Link } from "react-router-dom"
 
 class QuizPage extends Component {
@@ -11,14 +12,25 @@ class QuizPage extends Component {
         this.state = {
             props:[],
             isShown: false,
-            myScore: 0
+            myScore: 0,
+            which: props.which
         }
+        // console.log("To jest w konstr: "+props);
+        // console.log(props.which);
     }
 
     componentDidMount(){
         const {props} = this.state;
-        if(props.length === 0){
+        if(props.length === 0 && this.state.which === "React"){
             getQuiz()
+            .then(props1 =>{
+                this.setState({
+                    props: props1,
+                })
+            })
+        } 
+        else if(props.length === 0 && this.state.which === "Angular"){
+            getQuizA()
             .then(props1 =>{
                 this.setState({
                     props: props1,
@@ -103,6 +115,7 @@ class QuizPage extends Component {
                                 }
                                 data={this.updateQuiz}
                                 score={this.handleScore}
+                                which={this.state.which}
                             />
                         </div>
                     ))}
@@ -118,7 +131,7 @@ class QuizPage extends Component {
                             </button>
                             {this.state.isShown ? (
                                 <div>
-                                    <AddQuestion data={this.props} updateQuestions={this.updateQuestions}/>
+                                    <AddQuestion data={this.state.props} updateQuestions={this.updateQuestions} which={this.state.which}/>
                                 </div>
                     
                             ) : (
