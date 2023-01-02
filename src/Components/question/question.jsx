@@ -12,23 +12,31 @@ class Question extends Component {
         this.state = {
             isShown: false,
             points: 0,
-            which:props.which
+            which:props.which,
+            cliked: false
         };
     }
     handleAnswer = (userAnswer) => {
-        if (userAnswer === this.props.CorrectAnswer) {
-            this.setState(() => {
-                return { answer: "Poprawna odpowiedź!" };
-            })
-            this.setState({ points: 1 });
-            this.props.score(1)
+        if(this.state.cliked === false){
+            if (userAnswer === this.props.CorrectAnswer) {
+                this.setState(() => {
+                    return { answer: "Poprawna odpowiedź!" };
+                })
+                this.setState({ points: 1 });
+                this.props.score(1)
+                this.setState({cliked:true})
+            }
+            else {
+                this.setState(() => {
+                    return { answer: "Niestety źle :(" };
+                })
+                this.setState({ points: 0 });
+                this.props.score(0)
+                this.setState({cliked:true})
+            }
         }
-        else {
-            this.setState(() => {
-                return { answer: "Niestety źle :(" };
-            })
-            this.setState({ points: 0 });
-            this.props.score(0)
+        else{
+            console.log("Odp juz została wybrana!")
         }
     }
     handleDelete = () =>{

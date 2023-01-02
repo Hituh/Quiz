@@ -61,3 +61,23 @@ body {
   .Button2:hover {
     background-color: #666;
   }
+.link{
+  display:flex;
+  margin-left: 42%;
+  margin-right: 42%;
+  padding-left: 6.2vh;
+  background-color: #4CAF50;
+  font-size: 30px;
+  border-radius: 4px;
+  margin-bottom: 2vh;
+}
+.score{
+  width: 350px;
+  height: 70px;
+  background: linear-gradient(180deg, #f08, #d0e);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: "center";
+  margin-top: 2vh;
+}

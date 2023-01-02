@@ -13,8 +13,7 @@ class QuizPage extends Component {
             props:[],
             isShown: false,
             myScore: 0,
-            which: props.which
-        }
+            which: props.which        }
         // console.log("To jest w konstr: "+props);
         // console.log(props.which);
     }
@@ -100,8 +99,8 @@ class QuizPage extends Component {
     render (){
         return (
             <div className="main1">
-                <div>
-                    <h1>Aktualny wynik: {this.state.myScore}</h1>
+                <div className={styles.score} style={{position: "fixed"}}>
+                    <h1 style={{marginTop:"1vh"}}>Aktualny wynik: {this.state.myScore}</h1>
                 </div>
                 <div className={styles.card_list}>
                     {this.state.props.map((data) => (
@@ -120,7 +119,7 @@ class QuizPage extends Component {
                         </div>
                     ))}
                 </div>
-                <Link to={`/score/${this.state.myScore}`}style={{ textDecoration: "none" }}>Zakończ Quiz</Link>
+                <Link to={`/score/${this.state.myScore}`}style={{ textDecoration: "none" }} className={styles.link}>Zakończ Quiz</Link>
                 <div className="row">
                 
                         <div>
