@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./addQuestion.module.css";
 import {addQuestion} from '../api/QuizApi.js'
+import PropTypes from "prop-types";
 class AddQuestion extends React.Component {
     constructor(props) {
         super(props);
@@ -187,3 +188,8 @@ class AddQuestion extends React.Component {
 }
 export default AddQuestion;
 
+AddQuestion.propTypes = { 
+    data: PropTypes.object.isRequired,
+    updateQuestion: PropTypes.func.isRequired,
+    which: PropTypes.string.isRequired
+} 
