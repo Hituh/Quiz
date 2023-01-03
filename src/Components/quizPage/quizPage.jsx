@@ -14,8 +14,6 @@ class QuizPage extends Component {
             isShown: false,
             myScore: 0,
             which: props.which        }
-        // console.log("To jest w konstr: "+props);
-        // console.log(props.which);
     }
 
     componentDidMount(){
@@ -55,9 +53,9 @@ class QuizPage extends Component {
         this.setState((prevState) => {
             done=true
             console.log('added')
-            let students=prevState.props;
-            students.push(question);
-        return {props: students};
+            let questions=prevState.props;
+            questions.push(question);
+        return {props: questions};
           });
     }
 

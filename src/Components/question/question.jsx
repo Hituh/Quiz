@@ -66,12 +66,12 @@ class Question extends Component {
                 <p style={{ marginLeft: "40%", color:"#3b43de", fontSize:"2.5vh", fontWeight:"700"}}> {this.state.answer} </p>
             </div>
             {this.state.isShown ? (
-                                <div>
-                                    <EditQuestion data={this.props} update={this.props.data} which={this.state.which}/>
-                                </div>
-                            ) : (
-                                <></>
-                                )}
+                                    <div>
+                                        <EditQuestion data={this.props} update={this.props.data} which={this.state.which}/>
+                                    </div>
+                                  ) : (
+                                        <></>
+                                        )}
         </>
         )
     }
