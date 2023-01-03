@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./addQuestion.module.css";
 import {addQuestion} from '../api/QuizApi.js'
+import {addQuestionA} from '../api/QuizApi.js'
 import PropTypes from "prop-types";
 class AddQuestion extends React.Component {
     constructor(props) {
@@ -101,7 +102,7 @@ class AddQuestion extends React.Component {
     
             this.props.updateQuestions(newQuestion)
             if(this.state.which === "React"){addQuestion(newQuestion);}
-            else if(this.state.which === "Angular"){addQuestion(newQuestion);}
+            else if(this.state.which === "Angular"){addQuestionA(newQuestion);}
     };
     render() {
         return (
