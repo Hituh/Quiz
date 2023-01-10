@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./addQuestion.module.css";
-import {addQuestion} from '../api/QuizApi.js'
-import {addQuestionA} from '../api/QuizApi.js'
+import { addQuestion } from '../api/QuizApi.js'
+import { addQuestionA } from '../api/QuizApi.js'
 import PropTypes from "prop-types";
 class AddQuestion extends React.Component {
     constructor(props) {
@@ -47,11 +47,11 @@ class AddQuestion extends React.Component {
 
         switch (fieldName) {
             case 'Id':
-                if(value != null)
-                for(var i = 0; i <this.props.data.length; i++){
-                    idValid = (value == this.props.data[i].Id) // tu musi byc tylko == bo === nie dziala
-                    if(idValid) break;
-                }                
+                if (value != null)
+                    for (var i = 0; i < this.props.data.length; i++) {
+                        idValid = (value == this.props.data[i].Id) // tu musi byc tylko == bo === nie dziala
+                        if (idValid) break;
+                    }
                 break;
             case 'Question':
                 questionValid = value.length >= 3;
@@ -69,7 +69,7 @@ class AddQuestion extends React.Component {
                 answer4Valid = value.length >= 3;
                 break;
             case 'CorrectAnswer':
-                correctAnswerValid = (value <=4 && value >=1);
+                correctAnswerValid = (value <= 4 && value >= 1);
                 break;
 
             default:
@@ -92,17 +92,17 @@ class AddQuestion extends React.Component {
 
     submitForm(event) {
         event.preventDefault();
-        
+
         var newQuestion = {
             Id: Number(this.state.Id),
             Question: this.state.Question,
             Answers: [this.state.Answer1, this.state.Answer2, this.state.Answer3, this.state.Answer4],
             CorrectAnswer: Number(this.state.CorrectAnswer),
         };
-    
-            this.props.updateQuestions(newQuestion)
-            if(this.state.which === "React"){addQuestion(newQuestion);}
-            else if(this.state.which === "Angular"){addQuestionA(newQuestion);}
+
+        this.props.updateQuestions(newQuestion)
+        if (this.state.which === "React") { addQuestion(newQuestion); }
+        else if (this.state.which === "Angular") { addQuestionA(newQuestion); }
     };
     render() {
         return (
@@ -189,7 +189,7 @@ class AddQuestion extends React.Component {
 }
 export default AddQuestion;
 
-AddQuestion.propTypes = { 
+AddQuestion.propTypes = {
     data: PropTypes.object.isRequired,
     updateQuestion: PropTypes.func.isRequired,
     which: PropTypes.string.isRequired
