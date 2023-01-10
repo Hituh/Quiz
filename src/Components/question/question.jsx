@@ -5,6 +5,8 @@ import { deleteQuestion } from '../api/QuizApi.js'
 import { deleteQuestionA } from '../api/QuizApi.js'
 import PropTypes from "prop-types";
 
+//test do sprawdzenia poprawnosci commita
+
 class Question extends Component {
     constructor(props) {
         super(props);
