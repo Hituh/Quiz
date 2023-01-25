@@ -55,20 +55,22 @@ class Question extends Component {
         return (
             <>
                 <div className={styles.card}>
-                    <h2 style={{ marginLeft: "2%", color: "white" }}>{this.props.Question}</h2>
-                    <div>
-                        <div className={styles.questions} style={{ width: "20%", float: "left" }} >
-                            <p className={styles.questions}>• {this.props.Answers[0]}</p>
-                            <p className={styles.questions}>• {this.props.Answers[1]}</p>
-                            <p className={styles.questions}>• {this.props.Answers[2]}</p>
-                            <p className={styles.questions}>• {this.props.Answers[3]}</p>
-                        </div>
-                        <div style={{ width: "80%", float: "right" }} >
-                            <button className={styles.Button2} onClick={() => this.handleAnswer(1)}>Zaznacz</button>
-                            <button className={styles.Button2} onClick={() => this.handleAnswer(2)}>Zaznacz</button>
-                            <button className={styles.Button2} onClick={() => this.handleAnswer(3)}>Zaznacz</button>
-                            <button className={styles.Button2} onClick={() => this.handleAnswer(4)}>Zaznacz</button>
-                        </div>
+                    <h1 style={{ marginLeft: "2%", color: "white", margin: "2vh" }}>{this.props.Question}</h1>
+                    <div className={styles.parent}>
+                            <div className={styles.div1}><p className={styles.questions}>• {this.props.Answers[0]}</p></div>
+                            <div className={styles.div2}><p className={styles.questions}>• {this.props.Answers[1]}</p></div>
+                            <div className={styles.div3}><p className={styles.questions}>• {this.props.Answers[2]}</p></div>
+                            <div className={styles.div4}><p className={styles.questions}>• {this.props.Answers[3]}</p></div>
+                      
+                        <div className={styles.div5}>
+                            <button className={styles.Button2} onClick={() => this.handleAnswer(1)}>Zaznacz</button></div>
+                        <div className={styles.div6}>
+                            <button className={styles.Button2} onClick={() => this.handleAnswer(2)}>Zaznacz</button></div>
+                        <div className={styles.div7}>
+                            <button className={styles.Button2} onClick={() => this.handleAnswer(3)}>Zaznacz</button></div>
+                        <div className={styles.div8}>
+                            <button className={styles.Button2} onClick={() => this.handleAnswer(4)}>Zaznacz</button></div>
+                       
                     </div>
                     <p style={{ marginLeft: "70%", fontSize: "10px" }}>Id pytania: {this.props.Id}
                         <button className={styles.editButtons} style={{ marginLeft: "40%" }} onClick={this.handleEdit}>Edytuj</button>

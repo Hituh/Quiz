@@ -9,6 +9,7 @@ import { Link } from "react-router-dom"
 class QuizPage extends Component {
     constructor(props) {
         super(props)
+        this.updateQuestions = this.updateQuestions.bind(this)
         this.state = {
             props: [],
             isShown: false,
