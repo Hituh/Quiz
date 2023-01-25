@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./editQuestion.module.css";
-import {editQuestion} from '../api/QuizApi.js'
-import {editQuestionA} from '../api/QuizApi.js'
+import { editQuestion } from '../api/QuizApi.js'
+import { editQuestionA } from '../api/QuizApi.js'
 import PropTypes from "prop-types";
 class EditQuestion extends React.Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class EditQuestion extends React.Component {
             Answer3: this.props.data.Answers[2],
             Answer4: this.props.data.Answers[3],
             CorrectAnswer: this.props.data.CorrectAnswer,
-            which:props.which
+            which: props.which
         };
     }
 
@@ -26,7 +26,7 @@ class EditQuestion extends React.Component {
 
     submitForm(event) {
         event.preventDefault();
-        
+
         var editedQuestion = {
             Id: Number(this.state.Id),
             Question: this.state.Question,
@@ -34,72 +34,69 @@ class EditQuestion extends React.Component {
             CorrectAnswer: Number(this.state.CorrectAnswer),
         };
 
-        if(this.state.which === "React"){
+        if (this.state.which === "React") {
             editQuestion(this.state.Id, editedQuestion); //to do bazy
         }
-        else if(this.state.which === "Angular"){
+        else if (this.state.which === "Angular") {
             editQuestionA(this.state.Id, editedQuestion); //to do bazy
         }
         this.props.update("PUT", editedQuestion) //to do state w quizPage
-            
-        
+
+
     };
     render() {
         return (
-            <div>
-                <div className={styles.cont}>
-                    <div className={styles.form_container}>
-                        <form>
-                            <h2>Edytuj Pytanie</h2>
+            <div className={styles.cont}>
+                <div className={styles.form_container}>
+                    <form>
+                        <h2>Edytuj Pytanie</h2>
+                        <div>
+                            <label>Pytanie</label>
+                            <input type="text" className="form-control" name="Question"
+                                value={this.state.Question}
+                                onChange={this.handleUserInput}
+                            />
+                        </div>
 
-                            <div>
-                                <label>Pytanie</label>
-                                <input type="text" className="form-control" name="Question"
-                                    value={this.state.Question}
-                                    onChange={this.handleUserInput} 
-                                    />
-                            </div>
+                        <div>
+                            <label>Odpowiedź 1</label>
+                            <input type="text" required className="form-control" name="Answer1"
+                                value={this.state.Answer1}
+                                onChange={this.handleUserInput} />
+                        </div>
 
-                            <div>
-                                <label>Odpowiedź 1</label>
-                                <input type="text" required className="form-control" name="Answer1"
-                                    value={this.state.Answer1}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <div>
+                            <label>Odpowiedź 2</label>
+                            <input type="text" required className="form-control" name="Answer2"
+                                value={this.state.Answer2}
+                                onChange={this.handleUserInput} />
+                        </div>
 
-                            <div>
-                                <label>Odpowiedź 2</label>
-                                <input type="text" required className="form-control" name="Answer2"
-                                    value={this.state.Answer2}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <div>
+                            <label>Odpowiedź 3</label>
+                            <input type="text" required className="form-control" name="Answer3"
+                                value={this.state.Answer3}
+                                onChange={this.handleUserInput} />
+                        </div>
 
-                            <div>
-                                <label>Odpowiedź 3</label>
-                                <input type="text" required className="form-control" name="Answer3"
-                                    value={this.state.Answer3}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <div>
+                            <label>Odpowiedź 4</label>
+                            <input type="text" required className="form-control" name="Answer4"
+                                value={this.state.Answer4}
+                                onChange={this.handleUserInput} />
+                        </div>
 
-                            <div>
-                                <label>Odpowiedź 4</label>
-                                <input type="text" required className="form-control" name="Answer4"
-                                    value={this.state.Answer4}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <div>
+                            <label>Poprawna odpowiedź</label>
+                            <input type="text" required className="form-control" name="CorrectAnswer"
+                                value={this.state.CorrectAnswer}
+                                onChange={this.handleUserInput} />
+                        </div>
 
-                            <div>
-                                <label>Poprawna odpowiedź</label>
-                                <input type="text" required className="form-control" name="CorrectAnswer"
-                                    value={this.state.CorrectAnswer}
-                                    onChange={this.handleUserInput} />
-                            </div>
-
-                            <button className={styles.Button2} onClick={this.submitForm.bind(this)}>
-                                Zatwierdź Edycję
-                            </button>
-                        </form>
-                    </div>
+                        <button className={styles.Button2} onClick={this.submitForm.bind(this)}>
+                            Zatwierdź Edycję
+                        </button>
+                    </form>
                 </div>
             </div>
         );
@@ -107,7 +104,7 @@ class EditQuestion extends React.Component {
 }
 export default EditQuestion;
 
-EditQuestion.propTypes = { 
+EditQuestion.propTypes = {
     data: PropTypes.object.isRequired,
     update: PropTypes.func.isRequired
 } 

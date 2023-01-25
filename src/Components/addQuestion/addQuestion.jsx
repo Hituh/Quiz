@@ -106,82 +106,65 @@ class AddQuestion extends React.Component {
     };
     render() {
         return (
-            <div>
-                <div className={styles.cont}>
-                    <div className={styles.form_container}>
-                        <form>
-                            <h2>Dodaj Pytanie</h2>
-                            <div>
-                                <label>Id</label>
-                                <input type="number" required className="form-control" name="Id"
-                                    placeholder="2"
-                                    value={this.state.Id}
-                                    onChange={this.handleUserInput} />
-                            </div>
+            <div className={styles.cont}>
+                <div className={styles.form_container}>
+                    <form>
+                        <h2>Dodaj Pytanie</h2>
+                        <label>Id</label>
+                        <input type="number" required className="form-control" name="Id"
+                            placeholder="2"
+                            value={this.state.Id}
+                            onChange={this.handleUserInput} />
 
-                            <div>
-                                <label>Pytanie</label>
-                                <input type="text" className="form-control" name="Question"
-                                    placeholder="Czy można?"
-                                    value={this.state.Question}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <label>Pytanie</label>
+                        <input type="text" className="form-control" name="Question"
+                            placeholder="Czy można?"
+                            value={this.state.Question}
+                            onChange={this.handleUserInput} />
 
-                            <div>
-                                <label>Odpowiedź 1</label>
-                                <input type="text" required className="form-control" name="Answer1"
-                                    placeholder="Tak"
-                                    value={this.state.Answer1}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <label>Odpowiedź 1</label>
+                        <input type="text" required className="form-control" name="Answer1"
+                            placeholder="Tak"
+                            value={this.state.Answer1}
+                            onChange={this.handleUserInput} />
 
-                            <div>
-                                <label>Odpowiedź 2</label>
-                                <input type="text" required className="form-control" name="Answer2"
-                                    placeholder="Nie"
-                                    value={this.state.Answer2}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <label>Odpowiedź 2</label>
+                        <input type="text" required className="form-control" name="Answer2"
+                            placeholder="Nie"
+                            value={this.state.Answer2}
+                            onChange={this.handleUserInput} />
 
-                            <div>
-                                <label>Odpowiedź 3</label>
-                                <input type="text" required className="form-control" name="Answer3"
-                                    placeholder="Chyba"
-                                    value={this.state.Answer3}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <label>Odpowiedź 3</label>
+                        <input type="text" required className="form-control" name="Answer3"
+                            placeholder="Chyba"
+                            value={this.state.Answer3}
+                            onChange={this.handleUserInput} />
 
-                            <div>
-                                <label>Odpowiedź 4</label>
-                                <input type="text" required className="form-control" name="Answer4"
-                                    placeholder="Może"
-                                    value={this.state.Answer4}
-                                    onChange={this.handleUserInput} />
-                            </div>
+                        <label>Odpowiedź 4</label>
+                        <input type="text" required className="form-control" name="Answer4"
+                            placeholder="Może"
+                            value={this.state.Answer4}
+                            onChange={this.handleUserInput} />
 
-                            <div>
-                                <label>Poprawna odpowiedź</label>
-                                <input type="text" required className="form-control" name="CorrectAnswer"
-                                    placeholder="1"
-                                    value={this.state.CorrectAnswer}
-                                    onChange={this.handleUserInput} />
-                            </div>
-                            <div style={{ color: "#F06292", marginBottom: "2vh" }}>
-                                {this.state.idValid && <p>Już istnieje pytanie o takim id</p>}
-                                {!this.state.questionValid && <p>Tytuł  musi mieć co najmniej 3 znaki</p>}
-                                {!this.state.answer1Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
-                                {!this.state.answer2Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
-                                {!this.state.answer3Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
-                                {!this.state.answer4Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
-                                {!this.state.correctAnswerValid && <p>Poprawna odpowiedź musi być z przedziału 1-4</p>}
+                        <label>Poprawna odpowiedź</label>
+                        <input type="text" required className="form-control" name="CorrectAnswer"
+                            placeholder="1"
+                            value={this.state.CorrectAnswer}
+                            onChange={this.handleUserInput} />
+                        <div style={{ color: "#F06292", marginBottom: "2vh" }}>
+                            {this.state.idValid && <p>Już istnieje pytanie o takim id</p>}
+                            {!this.state.questionValid && <p>Tytuł  musi mieć co najmniej 3 znaki</p>}
+                            {!this.state.answer1Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
+                            {!this.state.answer2Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
+                            {!this.state.answer3Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
+                            {!this.state.answer4Valid && <p>Odpowiedź musi mieć co najmniej 3 znaki</p>}
+                            {!this.state.correctAnswerValid && <p>Poprawna odpowiedź musi być z przedziału 1-4</p>}
+                        </div>
 
-                            </div>
-
-                            <button className={styles.Button2} onClick={this.submitForm.bind(this)} disabled={!this.state.formValid}>
-                                Dodaj Pytanie
-                            </button>
-                        </form>
-                    </div>
+                        <button className={styles.Button2} onClick={this.submitForm.bind(this)} disabled={!this.state.formValid}>
+                            Dodaj Pytanie
+                        </button>
+                    </form>
                 </div>
             </div>
         );
