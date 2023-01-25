@@ -14,7 +14,7 @@
     background-color: #424242;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    color:#BDBDBD;
+    color: #BDBDBD;
     min-width: 110vh;
     max-width: 110vh;
 }
@@ -33,7 +33,7 @@
 
 .card img {
     margin: auto;
-  display: block;
+    display: block;
 
     width: 100%;
     border-radius: 5px 5px 0 0;
@@ -46,7 +46,7 @@
 .card h3 {
     margin: 10px;
     font-size: 18px;
-    
+
 }
 
 .card p {
@@ -56,7 +56,7 @@
 }
 
 .Button2 {
-  display: inline-block;
+    display: inline-block;
     border: none;
     outline: none;
     padding: 10px 10px;
@@ -69,25 +69,48 @@
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
-    min-width: 25vh;
-    margin-left: 2%;
+    min-width: 15vh;
+    margin-left: 50vh;
     margin-inline-end: 100%;
+    margin-top: 2.1vh;
+
+}
+
+.editButtonsX {
+    border-radius: 20px;
+    padding: 0.4vh 1vh;
+
+    margin-left: 1vh;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: #333;
+    cursor: pointer;
+    transition: 0.3s;
 
 }
 
 .Button2:hover {
-  background-color: #666;
+    background-color: #666;
 
 }
 
-.questions{
-    margin-left: 10%;
-    color: red;
+.questions {
+    margin-top: 2vh;
+    color: white;
+    padding: 10px 5px;
+    min-width: 20vh;
+    font-size: 16px;
+    font-weight: bold;
+
 }
-.editButtons{
+
+.editButtons {
     border-radius: 20px;
-    padding:0.4vh 1vh;
-    margin-left:1vh;
+    padding: 0.4vh 1vh;
+    margin-left: 1vh;
     border: none;
     outline: none;
     font-weight: bold;

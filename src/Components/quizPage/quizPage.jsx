@@ -13,7 +13,8 @@ class QuizPage extends Component {
             props:[],
             isShown: false,
             myScore: 0,
-            which: props.which        }
+            which: props.which 
+               }
     }
 
     componentDidMount(){
@@ -47,7 +48,7 @@ class QuizPage extends Component {
       };
 
 
-    updateQuestions = (question) => {
+    updateQuestions (question) {
         var done = false;
         if(!done)
         this.setState((prevState) => {
