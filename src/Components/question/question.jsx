@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import styles from './question.module.css'
-import EditQuestion from "../editQuestion/editQuestion";
-import { deleteQuestion } from '../api/QuizApi.js'
-import { deleteQuestionA } from '../api/QuizApi.js'
+import styles from './Question.module.css'
+import EditQuestion from "../EditQuestion/EditQuestion";
+import { deleteQuestionReact } from '../api/QuizApi.js'
+import { deleteQuestionAngular } from '../api/QuizApi.js'
 import PropTypes from "prop-types";
 
 //test do sprawdzenia poprawnosci commita
@@ -43,8 +43,8 @@ class Question extends Component {
     }
     handleDelete = () => {
         this.props.data("DELETE", this.props.Id);
-        if (this.state.which === "React") { deleteQuestion(this.props.Id) }
-        else if (this.state.which === "Angular") { deleteQuestionA(this.props.Id) }
+        if (this.state.which === "React") { deleteQuestionReact(this.props.Id) }
+        else if (this.state.which === "Angular") { deleteQuestionAngular(this.props.Id) }
     }
 
     handleEdit = () => {

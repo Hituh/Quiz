@@ -2,10 +2,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
-import Header from './Components/header/header';
-import Home from './Pages/homePage/homePage'
-import QuizPage from './Components/quizPage/quizPage'
-import Score from './Pages/scorePage/scorePage'
+import Header from './Components/Header/Header';
+import Home from './Pages/HomePage/HomePage'
+import Quiz from './Components/Quiz/Quiz'
+import Score from './Pages/ScorePage/ScorePage'
 
 function App() {
   return (
@@ -14,8 +14,8 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<Home />}></Route>
-          <Route path="/quizPage" element={<QuizPage which={"React"}/>} />
-          <Route path="/quizPageA" element={<QuizPage which={"Angular"}/>} />
+          <Route path="/quizPageReact" element={<Quiz which={"React"}/>} />
+          <Route path="/quizPageAngular" element={<Quiz which={"Angular"}/>} />
           <Route path="/*" element={<h2>Bad route</h2>} />
           <Route path="/score/:score" element={<Score />} /> 
         </Routes>

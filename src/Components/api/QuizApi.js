@@ -1,8 +1,8 @@
 import axios from 'axios'
-axios.defaults.baseURL='http://localhost:7777/';
+axios.defaults.baseURL='http://localhost:7777';
 
-function getQuiz(){
-    return axios.get('meals')
+function getQuizReact(){
+    return axios.get("/react")
     .then((response) => {
         return response.data;
     })
@@ -11,9 +11,8 @@ function getQuiz(){
     })
 }
 
-function addQuestion(body){
-    console.log("yup")
-    return axios.post("/meals",body)
+function addQuestionReact(body){
+    return axios.post("/react",body)
     .then((response) => {
         return response;
     })
@@ -22,9 +21,9 @@ function addQuestion(body){
     })
 }
 
-function editQuestion(Id,body){
+function editQuestionReact(Id,body){
     console.log("W Api jest id: "+Id)
-    return axios.put("/meals/"+Id, body)
+    return axios.put("/react/"+Id, body)
     .then((response) => {
         return response;
     })
@@ -32,8 +31,8 @@ function editQuestion(Id,body){
         return error;
     })
 }
-function deleteQuestion(id){
-    return axios.delete("/meals/" +id)
+function deleteQuestionReact(id){
+    return axios.delete("/react/" +id)
     .then((response) => {
         return response;
     })
@@ -41,8 +40,8 @@ function deleteQuestion(id){
         return error;
     })
 }
-function getQuizA(){
-    return axios.get('categories')
+function getQuizAngular(){
+    return axios.get("/angular")
     .then((response) => {
         return response.data;
     })
@@ -51,9 +50,8 @@ function getQuizA(){
     })
 }
 
-function addQuestionA(body){
-    console.log("yup")
-    return axios.post("/categories",body)
+function addQuestionAngular(body){
+    return axios.post("/angular",body)
     .then((response) => {
         return response;
     })
@@ -62,9 +60,9 @@ function addQuestionA(body){
     })
 }
 
-function editQuestionA(Id,body){
+function editQuestionAngular(Id,body){
     console.log("W Api jest id: "+Id)
-    return axios.put("/categories/"+Id, body)
+    return axios.put("/angular/"+Id, body)
     .then((response) => {
         return response;
     })
@@ -72,8 +70,8 @@ function editQuestionA(Id,body){
         return error;
     })
 }
-function deleteQuestionA(id){
-    return axios.delete("/categories/" +id)
+function deleteQuestionAngular(id){
+    return axios.delete("/angular/" +id)
     .then((response) => {
         return response;
     })
@@ -81,4 +79,4 @@ function deleteQuestionA(id){
         return error;
     })
 }
-export {getQuiz, addQuestion, deleteQuestion, editQuestion, getQuizA, addQuestionA, deleteQuestionA, editQuestionA};
+export {getQuizReact, addQuestionReact, deleteQuestionReact, editQuestionReact, getQuizAngular, addQuestionAngular, deleteQuestionAngular, editQuestionAngular};

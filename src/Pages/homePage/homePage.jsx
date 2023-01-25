@@ -1,5 +1,5 @@
 import React from "react"
-import "./homePage.css"
+import "./HomePage.css"
 import {motion} from "framer-motion"
 
 const Home = () => {

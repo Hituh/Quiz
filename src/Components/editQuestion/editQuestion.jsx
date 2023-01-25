@@ -1,8 +1,9 @@
 import React from "react";
-import styles from "./editQuestion.module.css";
-import { editQuestion } from '../api/QuizApi.js'
-import { editQuestionA } from '../api/QuizApi.js'
+import styles from "./EditQuestion.module.css";
+import { editQuestionReact } from '../api/QuizApi.js'
+import { editQuestionAngular } from '../api/QuizApi.js'
 import PropTypes from "prop-types";
+
 class EditQuestion extends React.Component {
     constructor(props) {
         super(props);
@@ -35,10 +36,10 @@ class EditQuestion extends React.Component {
         };
 
         if (this.state.which === "React") {
-            editQuestion(this.state.Id, editedQuestion); //to do bazy
+            editQuestionReact(this.state.Id, editedQuestion); //to do bazy
         }
         else if (this.state.which === "Angular") {
-            editQuestionA(this.state.Id, editedQuestion); //to do bazy
+            editQuestionAngular(this.state.Id, editedQuestion); //to do bazy
         }
         this.props.update("PUT", editedQuestion) //to do state w quizPage
 

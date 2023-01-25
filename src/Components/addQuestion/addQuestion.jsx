@@ -1,8 +1,9 @@
 import React from "react";
-import styles from "./addQuestion.module.css";
-import { addQuestion } from '../api/QuizApi.js'
-import { addQuestionA } from '../api/QuizApi.js'
+import styles from "./AddQuestion.module.css";
+import { addQuestionReact } from '../api/QuizApi.js'
+import { addQuestionAngular } from '../api/QuizApi.js'
 import PropTypes from "prop-types";
+
 class AddQuestion extends React.Component {
     constructor(props) {
         super(props);
@@ -101,8 +102,8 @@ class AddQuestion extends React.Component {
         };
 
         this.props.updateQuestions(newQuestion)
-        if (this.state.which === "React") { addQuestion(newQuestion); }
-        else if (this.state.which === "Angular") { addQuestionA(newQuestion); }
+        if (this.state.which === "React") { addQuestionReact(newQuestion); }
+        else if (this.state.which === "Angular") { addQuestionAngular(newQuestion); }
     };
     render() {
         return (
@@ -173,7 +174,7 @@ class AddQuestion extends React.Component {
 export default AddQuestion;
 
 AddQuestion.propTypes = { 
-    data: PropTypes.object.isRequired,
-    updateQuestion: PropTypes.func.isRequired,
+    data: PropTypes.array.isRequired,
+    updateQuestions: PropTypes.func.isRequired,
     which: PropTypes.string.isRequired
 } 

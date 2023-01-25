@@ -1,6 +1,6 @@
 import React from "react"
 import { useParams } from 'react-router-dom'
-import './scorePage.css'
+import './ScorePage.css'
 
 const Score = () => {
     const { score } = useParams();

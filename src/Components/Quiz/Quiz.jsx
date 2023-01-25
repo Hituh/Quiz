@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Question from "../question/question";
-import AddQuestion from "../addQuestion/addQuestion";
-import styles from "../quizPage/quizPage.module.css";
-import { getQuiz } from '../api/QuizApi.js'
-import { getQuizA } from '../api/QuizApi.js'
+import Question from "../Question/Question";
+import AddQuestion from "../AddQuestion/AddQuestion";
+import styles from "../Quiz/Quiz.module.css";
+import { getQuizReact } from '../api/QuizApi.js'
+import { getQuizAngular } from '../api/QuizApi.js'
 import { Link } from "react-router-dom"
 
 class QuizPage extends Component {
@@ -21,7 +21,7 @@ class QuizPage extends Component {
     componentDidMount() {
         const { props } = this.state;
         if (props.length === 0 && this.state.which === "React") {
-            getQuiz()
+            getQuizReact()
                 .then(props1 => {
                     this.setState({
                         props: props1,
@@ -29,7 +29,7 @@ class QuizPage extends Component {
                 })
         }
         else if (props.length === 0 && this.state.which === "Angular") {
-            getQuizA()
+            getQuizAngular()
                 .then(props1 => {
                     this.setState({
                         props: props1,
@@ -47,7 +47,6 @@ class QuizPage extends Component {
         this.setState({ myScore: actualScore });
         console.log(actualScore)
     };
-
 
     updateQuestions(question) {
         var done = false;
