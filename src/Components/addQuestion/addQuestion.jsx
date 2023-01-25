@@ -190,7 +190,7 @@ class AddQuestion extends React.Component {
 export default AddQuestion;
 
 AddQuestion.propTypes = {
-    data: PropTypes.object.isRequired,
-    updateQuestion: PropTypes.func.isRequired,
+    data: PropTypes.array.isRequired,
+    updateQuestions: PropTypes.func.isRequired,
     which: PropTypes.string.isRequired
 } 
