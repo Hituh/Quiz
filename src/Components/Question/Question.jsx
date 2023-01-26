@@ -58,8 +58,8 @@ class Question extends Component {
         if (this.props.location !== prevProps.location) {
             this.setState({
                 answered: false,
-                
-            cliked: false
+
+                cliked: false
             })
         }
     }
@@ -83,18 +83,25 @@ class Question extends Component {
                             <button className={styles.Button2} onClick={() => this.handleAnswer(3)}>Zaznacz</button></div>
                         <div className={styles.div8}>
                             <button className={styles.Button2} onClick={() => this.handleAnswer(4)}>Zaznacz</button></div>
-
-                    </div>
-                    <p style={{ marginLeft: "70%", fontSize: "10px" }}>Id pytania: {this.props.Id}
-                        <button className={styles.editButtons} style={{ marginLeft: "40%" }} onClick={this.handleEdit}>Edytuj</button>
-                        <button className={styles.editButtonsX} onClick={this.handleDelete}>X</button>
-                    </p>
-                    <p style={{ marginLeft: "40%", color: "#3b43de", fontSize: "2.5vh", fontWeight: "700" }}> {this.state.answer} </p>
-                    {this.state.answered &&
-                        <div>
-                            {this.state.isCorrectAnswer ? <p>Dobrze</p> : <p>Źle</p>}
+                        
+                        <div className={styles.div10}>
+                            <p style={{fontSize: "10px" }}>Id pytania: {this.props.Id}
+                                <button className={styles.editButtons} onClick={this.handleEdit}>Edytuj</button>
+                                <button className={styles.editButtonsX} onClick={this.handleDelete}>X</button>
+                            </p>
                         </div>
-                    }
+
+                        <div className={styles.div9}>
+                            {this.state.answered &&
+                                <div>
+                                    {this.state.isCorrectAnswer ?
+                                        <h3 className={styles.goodAnswer}>Dobrze</h3> :
+                                        <h3 className={styles.badAnswer}>Źle</h3>}
+                                </div>
+                            }
+                        </div>
+                    </div>
+
                 </div>
                 {this.state.isShown ? (
                     <div>
