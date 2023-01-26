@@ -14,8 +14,8 @@ function App() {
         <Header />
         <Routes>
           <Route index element={<Home />}></Route>
-          <Route path="/quizPageReact" element={<Quiz which={"React"}/>} />
-          <Route path="/quizPageAngular" element={<Quiz which={"Angular"}/>} />
+          <Route path="/quizPageReact" element={<Quiz which={"React"} location="/quizPageReact"/>} />
+          <Route path="/quizPageAngular" element={<Quiz which={"Angular"} location="/quizPageAngular"/>} />
           <Route path="/*" element={<h2>Bad route</h2>} />
           <Route path="/score/:score" element={<Score />} /> 
         </Routes>

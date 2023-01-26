@@ -14,11 +14,43 @@ class QuizPage extends Component {
             props: [],
             isShown: false,
             myScore: 0,
-            which: props.which
+            which: props.which,
+            updated: false,
+            }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.location !== prevProps.location) {
+            var whichTest = this.props.which
+            if (this.props.which == "React") this.setState({ which: "Angular" })
+            else if (this.props.which == "Angular") this.setState({ which: "React" })
+            console.log(`Render Quiz ${whichTest}`)
+            const { props } = this.state;
+            if (whichTest === "React") {
+                getQuizReact()
+                    .then(props1 => {
+                        this.setState({
+                            props: props1,
+                            myScore: 0,
+                            which: whichTest 
+                        })
+                    })
+            }
+            else if (whichTest === "Angular") {
+                getQuizAngular()
+                    .then(props1 => {
+                        this.setState({
+                            props: props1,
+                            myScore: 0,
+                            which: whichTest 
+                        })
+                    })
+            }
         }
     }
 
     componentDidMount() {
+        console.log(`Render quiz ${this.state.which}`)
         const { props } = this.state;
         if (props.length === 0 && this.state.which === "React") {
             getQuizReact()
@@ -37,6 +69,7 @@ class QuizPage extends Component {
                 })
         }
     }
+
     handleAdd = () => {
         this.setState({ isShown: !this.state.isShown });
     };
@@ -93,8 +126,8 @@ class QuizPage extends Component {
                 })
                 break;
         }
-
     }
+
     render() {
         return (
             <div className="main1">
@@ -111,6 +144,7 @@ class QuizPage extends Component {
                                 CorrectAnswer={
                                     data.CorrectAnswer
                                 }
+                                location={this.props.location}
                                 data={this.updateQuiz}
                                 score={this.handleScore}
                                 which={this.state.which}
